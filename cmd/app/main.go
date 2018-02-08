@@ -1,11 +1,13 @@
 package main
 
 import (
+	"net/url"
+	"fmt"
 
 	. "github.com/mafuyuk/tip-moya4"
-	"net/url"
+	"github.com/mafuyuk/tip-moya4/bot"
+
 	"github.com/ChimeraCoder/anaconda"
-	"fmt"
 )
 
 func main() {
@@ -23,11 +25,6 @@ func main() {
 	//	log.Fatal(err)
 	//}
 
-	//values := url.Values{}
-	//values.Add([クエリのキー], [値]
-	//t.AccountActivity(values)
-	//fmt.Println(tweet.Text)
-
 	v := url.Values{}
 	stream := t.UserStream(v) // 接続
 
@@ -38,9 +35,14 @@ func main() {
 			switch status := item.(type) {
 			case anaconda.Tweet:
 				// Tweet を受信
-				fmt.Printf("%#v", status.User.Id) //ユニークID
-				fmt.Printf("%s: %s\n", status.User.ScreenName, status.Text) //@以降のID
-				fmt.Printf("%s: %s\n", status.Text) //@以降のID
+				fmt.Printf("%s: %s: %s\n", status.User.Id, status.User.ScreenName, status.Text)
+
+				bitClient, err := bot.New(status.User.Id, status.User.ScreenName, status.Text)
+				if err != nil {
+					fmt.Printf("skip: %v", err)
+					return
+				}
+        bot.Exec(bitClient)
 			case anaconda.StatusDeletionNotice:
 			// pass
 			default:
