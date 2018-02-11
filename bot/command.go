@@ -1,7 +1,8 @@
 package bot
 
-//go:generate enumer stringer -type=Command -transform=kebab
-type Command string
+// Command はbotのコマンドを表す
+//go:generate enumer -type=Command -transform=kebab command.go
+type Command int
 
 const (
 	Balance Command = iota
