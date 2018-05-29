@@ -13,10 +13,10 @@ import (
 func main() {
 
 	t := NewTwitter(
-		"yDyBqCYT9UFbsqPjNvDuBWgTU",
-		"bUugxUzPY7CZyWnyECYH2QqVfK1cStWUBck0deXGjqvdJvei5c",
-		"787995333573775360-70dZWSrFukC01kco79KzltU4WhoN0HS",
-		"DexvphD9VSeZmzxvbGvmMu71slXn32WSenJbXUfYPjt4q",
+		"yDyBqCYT9UFbsqPjNvDuBWgTUa",
+		"bUugxUzPY7CZyWnyECYH2QqVfK1cStWUBck0deXGjqvdJvei5ca",
+		"787995333573775360-70dZWSrFukC01kco79KzltU4WhoN0HSa",
+		"DexvphD9VSeZmzxvbGvmMu71slXn32WSenJbXUfYPjt4qa",
 	)
 
 	//text := "test twitter API: Hello from Golang."
